@@ -1,0 +1,6 @@
+Assuming that the application is coded in Python and is worked on by 6 people I would set up a CI pipeline that firstly uses Ruff, which is a very fast Linter with many built-in rules - that would assure me that the whole code is clean and easily maintainable.
+Since the application is written in Python, a building step is not mandatory, unless an implementation of some dependencies is required, so the next step would be testing - which I would use PyTest for - making writing of the tests and handling potential failures easier.
+After that, if everything goes green, it's time to merge the main branch and push tested code to production.
+To set up a whole process, instead of Jenkins and GitHub Actions, a popular alternatives to use are GitLab, TeamCity and Red Hat Ansible Automation Platform. The choice would probably depend on the detailed specification of the app and preferences of other developers.
+Therefore, when it comes to picking between self-hosted and cloud-based solution, assuming that the app is fairly small or medium-sized (as there are only 6 people working on it), the cloud-based environment like GitHub Actions or GitLab would be my pick.
+Surely, all the choices I described above could vary depending on a more detailed plan of the development, but I think these solutions would be pretty flexible and robust considering the given circumstances.
