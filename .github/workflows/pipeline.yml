@@ -7,7 +7,7 @@ on:
 
 jobs:
   simple_deployment_pipeline:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -22,8 +22,7 @@ jobs:
       - name: Test
         run: npm run test
       - name: Test E2E
-        uses: cypress-io/github-action@v5
+        uses: cypress-io/github-action@v6
         with:
-          command: npm run test:e2e
           start: npm run start-prod
           wait-on: http://localhost:5000
