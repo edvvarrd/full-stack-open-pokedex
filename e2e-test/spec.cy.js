@@ -1,4 +1,4 @@
-import { describe, it, cy } from 'cypress'
+/* eslint-disable no-undef */
 
 describe('Pokedex', function () {
   it('front page can be opened', function () {
