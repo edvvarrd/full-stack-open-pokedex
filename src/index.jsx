@@ -3,4 +3,4 @@ import ReactDOM from 'react-dom'
 import App from './App'
 import './styles.css'
 
-ReactDOM.createRoot(<App />)
+ReactDOM.render(<App />, document.getElementById('app'))
