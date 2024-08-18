@@ -32,26 +32,6 @@ jobs:
       - name: Deploy
         if: ${{ github.event_name == 'push' }}
         run: curl https://api.render.com/deploy/${{ secrets.RENDER_SERVICE_ID }}?key=${{ secrets.RENDER_API_KEY }}
-      - name: Notify success
-        if: success()
-        uses: rjstone/discord-webhook-notify@v1
-        with:
-          webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
-          severity: info
-          details: Deployment succeeded!
-          footer: ${{ github.event.commits.author.name }}
-          username: Happy Student
-          avatarUrl: https://github.githubassets.com/images/modules/logos_page/Octocat.png
-      - name: Notify failure
-        if: failure()
-        uses: rjstone/discord-webhook-notify@v1
-        with:
-          webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
-          severity: error
-          details: Deployment failed!
-          footer: ${{ github.event.commits.author.name }}
-          username: Happy Student
-          avatarUrl: https://github.githubassets.com/images/modules/logos_page/Octocat.png
   tag_release:
     needs: [simple_deployment_pipeline]
     runs-on: ubuntu-20.04
@@ -64,3 +44,27 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           DEFAULT_BUMP: patch
           RELEASE_BRANCHES: main
+  notify:
+    needs: [simple_deployment_pipeline]
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Success
+        if: success()
+        uses: rjstone/discord-webhook-notify@v1
+        with:
+          webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
+          severity: info
+          details: Deployment succeeded!
+          footer: ${{ github.event.commits.author.name }}
+          username: Happy Student
+          avatarUrl: https://github.githubassets.com/images/modules/logos_page/Octocat.png
+      - name: Failure
+        if: failure()
+        uses: rjstone/discord-webhook-notify@v1
+        with:
+          webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
+          severity: error
+          details: Deployment failed!
+          footer: ${{ github.event.commits.author.name }}
+          username: Happy Student
+          avatarUrl: https://github.githubassets.com/images/modules/logos_page/Octocat.png
