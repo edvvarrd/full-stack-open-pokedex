@@ -59,4 +59,4 @@ jobs:
         uses: discord-actions/message@v2
         with:
           webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
-          message: "Deployment by ${{ github.event.commits[0].author.name }} failed!"
+          message: "Deployment by ${{ github.event.commits[0].author.name }} failed! Commit: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
