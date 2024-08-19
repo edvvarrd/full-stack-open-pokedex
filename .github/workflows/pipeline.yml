@@ -54,13 +54,9 @@ jobs:
         with:
           webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
           message: "Deployment succeeded!"
-          username: "GitHub"
-          avatar: "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
       - name: Failure
         if: failure()
         uses: discord-actions/message@v2
         with:
           webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
           message: "Deployment failed!"
-          username: "GitHub"
-          avatar: "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
