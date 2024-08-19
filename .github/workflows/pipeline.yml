@@ -55,9 +55,8 @@ jobs:
           webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
           severity: info
           details: Deployment succeeded!
-          footer: ${{ github.event.commits.author.name }}
+          footer: ${{ github.event.commits[0].author.name }}
           username: Happy Student
-          avatarUrl: https://github.githubassets.com/images/modules/logos_page/Octocat.png
       - name: Failure
         if: failure()
         uses: rjstone/discord-webhook-notify@v1
@@ -65,6 +64,5 @@ jobs:
           webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
           severity: error
           details: Deployment failed!
-          footer: ${{ github.event.commits.author.name }}
+          footer: ${{ github.event.commits[0].author.name }}
           username: Happy Student
-          avatarUrl: https://github.githubassets.com/images/modules/logos_page/Octocat.png
