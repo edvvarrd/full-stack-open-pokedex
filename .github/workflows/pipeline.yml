@@ -50,13 +50,15 @@ jobs:
     steps:
       - name: Success
         if: success()
-        uses: discord-actions/message@v2
+        uses: rjstone/discord-webhook-notify@v1
         with:
           webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
-          message: "Deployment succeeded!"
+          severity: info
+          details: Deployment succeeded!
       - name: Failure
         if: failure()
-        uses: discord-actions/message@v2
+        uses: rjstone/discord-webhook-notify@v1
         with:
           webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
-          message: "Deployment failed!"
+          severity: error
+          details: Deployment failed!
