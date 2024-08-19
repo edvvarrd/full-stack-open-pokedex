@@ -43,8 +43,7 @@ jobs:
         uses: discord-actions/message@v2
         with:
           webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
-          message: "Deployment by ${{ github.triggering_actor }} failed!
-          Commit: [${{ github.sha }}](${{ github.server_url }}/${{ github.repository }}/commit/${{ github.sha }})"
+          message: "Deployment by ${{ github.triggering_actor }} failed! Commit: [${{ github.sha }}](${{ github.server_url }}/${{ github.repository }}/commit/${{ github.sha }})"
   tag_release:
     needs: [simple_deployment_pipeline]
     runs-on: ubuntu-20.04
