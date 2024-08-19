@@ -37,13 +37,13 @@ jobs:
         uses: discord-actions/message@v2
         with:
           webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
-          message: "Deployment by ${{ github.event.head.user.login }} succeeded!"
+          message: "Deployment by ${{ github.event.pull_request.user.login }} succeeded!"
       - name: Failure
         if: failure()
         uses: discord-actions/message@v2
         with:
           webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
-          message: "Deployment by ${{ github.event.head.user.login }} failed! Build: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          message: "Deployment by ${{ github.event.pull_request.user.login }} failed! Build: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
   tag_release:
     needs: [simple_deployment_pipeline]
     runs-on: ubuntu-20.04
