@@ -1,12 +1,8 @@
-# Full Stack open CI/CD
+## FullStackOpen Exercises 11.1-11.18
 
-This repository is used for the CI/CD module of the Full stack open course
+Deployment pipeline project from Part 11: [Repository](https://github.com/edvvarrd/fso_p11_blogapp)
 
-Fork the repository to complete course exercises
-
-## Commands
-
-Start by running `npm install` inside the project folder
+To run an application locally, start by running `npm install` inside the project folder
 
 `npm start` to run the webpack dev server
 `npm test` to run tests
